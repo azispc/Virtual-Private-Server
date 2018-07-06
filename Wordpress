@@ -1,0 +1,29 @@
+##install web server on ubuntu server 14.0.15
+##https://github.com/Kickball/awesome-selfhosted
+
+#apache2 & mysql
+sudo apt install apache2
+sudo apt install mysql-server
+
+#php7.0
+sudo apt-add-repository ppa:ondrej/php
+sudo apt-get update
+sudo apt-get install php7.0
+sudo apt install libapache2-mod-php
+sudo apt install php-mysql
+sudo apt install php-gd php-mcrypt php-mbstring php-xml php-ssh2
+sudo service apache2 restart
+
+#phpmyadmin
+sudo apt-get install phpmyadmin php7.0-mbstring php7.0-gettext 
+
+#* Restarting web server [fail]
+#* The apache2 configtest failed.
+#Output of config test was:
+#Segmentation fault (core dumped)
+#Action 'configtest' failed.
+#The Apache error log may have more information.
+
+cd /etc/apache2/mods-enabled
+sudo rm php5.conf php5.load
+sudo service apache2 restart
